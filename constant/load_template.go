@@ -17,7 +17,7 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 
 func LoadTemplate() *Template {
 	template := &Template{
-		templates: template.Must(template.ParseGlob("repository/templates/*.html")),
+		templates: template.Must(template.ParseGlob("../repository/templates/*.html")),
 	}
 	return template
 }
