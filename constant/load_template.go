@@ -1,11 +1,8 @@
 package constant
 
 import (
-	"fmt"
 	"html/template"
 	"io"
-	"os"
-	"path/filepath"
 
 	"github.com/labstack/echo/v4"
 )
@@ -20,15 +17,8 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 
 func LoadTemplate() *Template {
 
-	path, _ := os.Executable()
-	filePath := filepath.Dir(path)
-
-	templateFolder := fmt.Sprintf("%v/repository/templates/*", filePath)
-
-	fmt.Print(filePath)
-
 	template := &Template{
-		templates: template.Must(template.ParseGlob(templateFolder)),
+		templates: template.Must(template.ParseGlob("repository/templates/*")),
 	}
 	return template
 }
